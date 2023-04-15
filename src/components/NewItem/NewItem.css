@@ -1,0 +1,71 @@
+.new-item-card{
+    display: flex;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 7px 20px gray;
+    margin-bottom: 50px;
+}
+.new-item-card .checkbox{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.form-container{
+    flex-grow: 1;
+}
+.new-item-card input{
+    font-size: 15px;
+    width: 100%;
+    border: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+.new-item-card input:focus{
+    outline: none;
+    border-width: 2px;
+}
+.btn-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-container button{
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow ease-in-out 0.2s;
+}
+.btn-container button:hover{
+    box-shadow: 0 10px 15px #aaa;
+}
+.btn-container button.primary{
+    background-color: #ffc328;
+}
+.badge-container{
+    display: flex;
+    margin-top: 15px;
+    gap: 10px;
+}
+.badge-container .p-badge{
+    cursor: pointer;
+    border: 1px solid #aaa;
+    border-radius: 20px;
+    font-size: 12px;
+    width: 60px;
+    padding: 4px 10px;
+    text-align: center;
+    font-weight: 600;
+}
+.p-badge.low.selected{
+    color: #317507;
+    background-color: #44b40033;
+}
+.p-badge.medium.selected{
+    color: #e39700;
+    background-color: #ffa80033;
+}
+.p-badge.high.selected{
+    color: #e01717;
+    background-color: #e0171733;
+}

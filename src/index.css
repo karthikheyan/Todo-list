@@ -1,0 +1,14 @@
+*{
+    font-family: "Poppins",sans-serif;
+}
+.material-symbols-outlined{
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 0,
+    'GRAD' 0,
+    'opsz' NaN;
+
+}
+.pointer{
+    cursor: pointer;
+}
