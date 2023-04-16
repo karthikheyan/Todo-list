@@ -19,6 +19,7 @@
 
 .card-title{
     margin-left: 20px;
+    overflow: auto;
 }
 .card-title.strike{
     text-decoration: line-through;

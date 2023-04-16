@@ -7,8 +7,7 @@ const PRIORITY = ['low','medium','high'];
 const NewItem = (props) => {
     const [isChecked,setChecked] = useState(false);
     const [title,setTitle] = useState('')
-    const [priority, setPriority] = useState('')
-    const [showForm, setShowForm] = useState(false)
+    const [priority, setPriority] = useState('low')
 
     const {addItem} = props
     const handleInputChange = (e)=>{
@@ -24,7 +23,7 @@ const NewItem = (props) => {
             priority,
         }
         addItem(obj)
-        setPriority('')
+        setPriority('low')
         setTitle('')
     }
 
@@ -35,8 +34,8 @@ const NewItem = (props) => {
                         :(<span onClick={()=> setChecked(true)} className="material-symbols-outlined pointer">check_box_outline_blank</span>)}
         </div>
         <div className='form-container'>
-            <input placeholder="Type here" onInput={()=> setShowForm(true)} value={title} className = "input" type="text" onChange={handleInputChange}/>
-            {showForm && title && (<div>
+            <input placeholder="Type here" value={title} className = "input" type="text" onChange={handleInputChange}/>
+            {title && (<div>
                 <div className="badge-container">
                 {PRIORITY.map((p) => 
                 <div key={p} 
@@ -45,15 +44,15 @@ const NewItem = (props) => {
                 value={p}>  
                 {p}
                 </div>)}
-            </div>
+                </div>
 
-            <div className='btn-container'>
+                <div className='btn-container'>
                     <button className='primary' onClick={handleSave}>Save</button>
                     <button onClick={()=> {
                         setTitle('')
-                        setPriority('')
+                        setPriority('low')
                     }}>Clear</button>
-            </div>
+                </div>
 
             </div>)}
         </div>
