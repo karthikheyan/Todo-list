@@ -5,6 +5,7 @@
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 .item-card.high{
     border-left: 6px solid #e01717;
