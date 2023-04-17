@@ -21,6 +21,12 @@ const NewItem = (props) => {
         setTitle(e.target.value)
     }
 
+    const handleEnter = (e)=> {
+        if(e.key==="Enter"){
+            handleSave()
+        }
+    }
+
     const handleSave = ()=> {
         if(!title, !priority){
             return
@@ -48,7 +54,7 @@ const NewItem = (props) => {
                         :(<span onClick={()=> setChecked(true)} className="material-symbols-outlined pointer">check_box_outline_blank</span>)}
         </div>
         <div className='form-container'>
-            <input placeholder="Type here" value={title} className = "input" type="text" onChange={handleInputChange}/>
+            <input placeholder="Type here" value={title} className = "input" type="text" onChange={handleInputChange} onKeyDown={handleEnter}/>
             {title && (<div>
                 <div className="badge-container">
                 {PRIORITY.map((p) => 
