@@ -3,7 +3,7 @@ import TodoListItem from './TodoListItem/TodoListItem'
 
 
 const TodoList = (props) => {
-    const {deleteItem, list} = props
+    const {deleteItem, list,onEdit} = props
   return (
     <div>
         {list.length ? (list.map((item,index)=> 
@@ -12,6 +12,7 @@ const TodoList = (props) => {
          item={item}
          index={index}
          onDelete={deleteItem}
+         onEdit = {onEdit}
          />))
          : (<center>No Todo list to display!</center>)
         }

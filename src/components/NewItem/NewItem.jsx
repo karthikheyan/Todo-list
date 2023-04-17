@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import "./NewItem.css"
 
 const PRIORITY = ['low','medium','high'];
 
 const NewItem = (props) => {
+    const { addItem, editState, editItem } = props
     const [isChecked,setChecked] = useState(false);
     const [title,setTitle] = useState('')
     const [priority, setPriority] = useState('low')
-
-    const {addItem} = props
+    const isEdit = Boolean(editState._id)
+    useEffect(() => {
+        if(editState._id){
+            setTitle(editState.title)
+            setPriority(editState.priority)
+        }      
+    }, [editState])
+    
     const handleInputChange = (e)=>{
         setTitle(e.target.value)
     }
@@ -22,10 +29,17 @@ const NewItem = (props) => {
             title,
             priority,
         }
-        addItem(obj)
+        if(isEdit) {
+            obj._id = editState._id;
+            editItem(obj);
+        }
+        else {
+            addItem(obj)
+        }
         setPriority('low')
         setTitle('')
     }
+
 
   return (
     <div className='new-item-card'>
