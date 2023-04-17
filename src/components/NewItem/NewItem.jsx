@@ -6,7 +6,6 @@ const PRIORITY = ['low','medium','high'];
 
 const NewItem = (props) => {
     const { addItem, editState, editItem } = props
-    const [isChecked,setChecked] = useState(false);
     const [title,setTitle] = useState('')
     const [priority, setPriority] = useState('low')
     const isEdit = Boolean(editState._id)
@@ -34,6 +33,7 @@ const NewItem = (props) => {
         const obj = {
             title,
             priority,
+            isCompleted: false
         }
         if(isEdit) {
             obj._id = editState._id;
@@ -49,10 +49,6 @@ const NewItem = (props) => {
 
   return (
     <div className='new-item-card'>
-        <div className='checkbox'>
-            {isChecked? (<span onClick={()=> setChecked(false)} className="material-symbols-outlined pointer">select_check_box</span>)
-                        :(<span onClick={()=> setChecked(true)} className="material-symbols-outlined pointer">check_box_outline_blank</span>)}
-        </div>
         <div className='form-container'>
             <input placeholder="Type here" value={title} className = "input" type="text" onChange={handleInputChange} onKeyDown={handleEnter}/>
             {title && (<div>

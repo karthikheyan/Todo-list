@@ -17,15 +17,17 @@ const App = ()=>{
     then((json)=> {
       let data = json.data.reverse()
       setList(data)
+
     })
     .catch(()=> console.log("network error"))
     :
-    fetch(`http://localhost:3000/api/v2/todo`).then((res)=>res.json()).
-    then((json)=> {
+    fetch(`http://localhost:3000/api/v2/todo`).then((res)=>res.json())
+    .then((json)=> {
       let data = json.data.reverse()
       setList(data)
     })
     .catch(()=> console.log("network error"))
+
 
   },[editState,useFilter])
 
@@ -69,7 +71,34 @@ const App = ()=>{
     })
     .catch((err)=> console.log("network error" + err))
   }
-
+  const editCompleted = (updatedItem)=>{
+    updatedItem.isCompleted=true;
+    fetch(`http://localhost:3000/api/v2/todo/${updatedItem._id}`,{
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json,text/plain,*/*',
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(updatedItem)
+    }).then(()=> {
+      setEditState({});
+    })
+    .catch((err)=> console.log("network error" + err))
+  }
+  const editNotCompleted = (updatedItem)=>{
+    updatedItem.isCompleted=false;
+    fetch(`http://localhost:3000/api/v2/todo/${updatedItem._id}`,{
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json,text/plain,*/*',
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(updatedItem)
+    }).then(()=> {
+      setEditState({});
+    })
+    .catch((err)=> console.log("network error" + err))
+  }
   const triggerEdit = (item)=> {
     setEditState(item)
   }
@@ -78,7 +107,15 @@ const App = ()=>{
     <div className='app'>
     <h1 className='title'>Todo List</h1>
     <NewItem addItem={addItem} editState={editState} editItem={editItem} />
-    <TodoList list = {list} deleteItem={deleteItem} onEdit={triggerEdit} setUseFilter={setUseFilter}/>
+    <TodoList
+      list = {list}
+      deleteItem={deleteItem} 
+      onEdit={triggerEdit} 
+      setUseFilter={setUseFilter} 
+      useFilter={useFilter}
+      editCompleted={editCompleted}
+      editNotCompleted={editNotCompleted}
+      />
     <ToastContainer></ToastContainer>
     </div>
   )

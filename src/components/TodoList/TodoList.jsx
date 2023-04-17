@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import TodoListItem from './TodoListItem/TodoListItem'
-
+import "./TodoList.css"
+import FilterItem from '../FilterItem/FilterItem'
 
 const TodoList = (props) => {
-    const {deleteItem, list,onEdit,setUseFilter} = props
-    const filterValue = document.getElementsByClassName('filterDropDown').value
-    console.log(filterValue)
+    const {deleteItem, list,onEdit,setUseFilter,useFilter,editCompleted, editNotCompleted} = props
     return (
       <div>
-        <div className="filter-container">
-          <div onClick = {()=> setUseFilter('all')} className='filtler-clear-btn'>Clear filters</div>
-          <select name="filter-dropdown" className="filterDropDown">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-        </div>
-
+        <FilterItem setUseFilter={setUseFilter} useFilter={useFilter}/>
         {list.length ? (list.map((item,index)=> 
         <TodoListItem
          key={index}
@@ -24,6 +15,8 @@ const TodoList = (props) => {
          index={index}
          onDelete={deleteItem}
          onEdit = {onEdit}
+         editCompleted = {editCompleted}
+         editNotCompleted = {editNotCompleted}
          />))
          : (<center>No Todo list to display!</center>)
         }

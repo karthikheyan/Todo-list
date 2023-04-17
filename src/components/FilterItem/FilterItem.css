@@ -1,0 +1,43 @@
+.filter-container{
+    padding: 20px;
+    display: flex;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    justify-content: space-between;
+}
+.filter-options{
+    margin-left: 10px;
+    display: flex;
+    gap: 20px;
+}
+.filter-option{
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid black;
+    box-shadow: 4px 4px black;
+}
+
+.filter-option.high{
+    background-color: #e01717;
+    color: white;
+}
+.filter-option.low{
+    background-color: #317507;
+    color: white;
+}
+.filter-option.medium{
+    background-color: #e39700;
+    color: white;
+}
+
+.filter-clear-btn{
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(24, 135, 179);
+    border: 1px solid black;
+    box-shadow: 4px 4px black;
+}
