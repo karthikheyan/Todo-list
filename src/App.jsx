@@ -1,6 +1,7 @@
 import './App.css'
 import NewItem from './components/NewItem/NewItem'
 import TodoList from './components/TodoList/TodoList'
+import FilterItem from './components/FilterItem/FilterItem'
 import { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -107,12 +108,11 @@ const App = ()=>{
     <div className='app'>
     <h1 className='title'>Todo List</h1>
     <NewItem addItem={addItem} editState={editState} editItem={editItem} />
+    <FilterItem setUseFilter={setUseFilter} useFilter={useFilter}/>
     <TodoList
       list = {list}
       deleteItem={deleteItem} 
       onEdit={triggerEdit} 
-      setUseFilter={setUseFilter} 
-      useFilter={useFilter}
       editCompleted={editCompleted}
       editNotCompleted={editNotCompleted}
       />
